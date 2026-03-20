@@ -1,4 +1,4 @@
-\##Linux Permission and User Management Cheat Sheet
+\## Linux Permission and User Management Cheat Sheet
 
 
 
@@ -32,13 +32,13 @@ chmod a+x file -> add execute permissions for everyone
 
 \## chown
 
-sudo chown user file or directory -> change owner 
+sudo chown user file or directory -> change owner
 
 sudo chown user:group file or directory ->  change the owner and the group
 
 sudo chown :group file or directory -> change group only
 
-sudo chown -R user: group directory -> recursive
+sudo chown -R user:group directory -> recursive
 
 
 
@@ -69,9 +69,9 @@ su - username or newgrp groupname
 
 
 
-\##sudo
+\## sudo
 
-Temporary privilege escalation - it is logged, audited and safer then root login.
+Temporary privilege escalation - it is logged, audited and safer than root login.
 
 
 
@@ -101,7 +101,7 @@ sudo passwd user -> set password
 
 sudo usermod -aG group user -> add to group, always use -aG
 
-sudo userdel -r user -> delete user and home directory 
+sudo userdel -r user -> delete user and home directory
 
 
 
@@ -119,7 +119,7 @@ Key files:
 
 Password hash prefix:
 
-$y$ = yescript (modern Ubuntu default, memory hard)
+$y$ = yescrypt (modern Ubuntu default, memory hard)
 
 $6$ = SHA-512 (older systems, still common in production)
 
@@ -127,17 +127,17 @@ $6$ = SHA-512 (older systems, still common in production)
 
 \## Finding Dangerous Permissions
 
-find / -perm -o+w 2>/dev/null -> word writable files 
+find / -perm -o+w 2>/dev/null -> world writable files
 
 find /usr/bin -perm -4000 -> SetUID binaries
 
-find /usr/bin -perm -2000 -> SetGID binaries 
+find /usr/bin -perm -2000 -> SetGID binaries
 
-find / -nouser 2>/dev/null -> orphaned files 
+find / -nouser 2>/dev/null -> orphaned files
 
 
 
-2>/dell/null suppresses permission denied noise
+2>/dev/null suppresses permission denied noise
 
 
 
