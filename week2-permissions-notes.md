@@ -1,14 +1,14 @@
-\## Linux User Management and Permissions
+## Linux User Management and Permissions
 
 
 
-\## What This Week Covered
+## What This Week Covered
 
 This week I moved from SSH configuration into Linux permission and user management. I learned how permissions work at the file and directory level, how special permission bits extend the standard model, and how ACLs allow fine grained access beyond the standard three levels explained below. I also learned how to audit a system for dangerous permissions and how filesystem attributes can protect files even from root.
 
 
 
-\## Permissions
+## Permissions
 
 \-There are three standard access levels that I learned are: the owner (the person who owns the file), the group (the group that is assigned to the file), and others (everyone else on the system).
 
@@ -50,7 +50,7 @@ This week I moved from SSH configuration into Linux permission and user manageme
 
 
 
-\## Special Permission Bits
+## Special Permission Bits
 
 \-Sticky Bits: are set on shared directories and prevents me from deleting files in the shared directory that don't belong to me even if I have write permissions. Directories that have Sticky Bits special permissions applied to them start with 1000 and end with t or T at the end of the permission string, taking the place where the execute(x) would be for others permissions. I learned that when others have execute permission the t is common and when others don't then the T is capital. Example of a directory has sticky bits special permissions is /tmp. /tmp is a world writable file so any user can create and process temporary files and sticky bits prevents a user from deleting another user's files.
 
@@ -66,7 +66,7 @@ This week I moved from SSH configuration into Linux permission and user manageme
 
 &#x20;
 
-\## Permission Check Order
+## Permission Check Order
 
 \-I learned that Linux permission checks are carried out in a specific order and stops at the first match.
 
@@ -74,13 +74,13 @@ This week I moved from SSH configuration into Linux permission and user manageme
 
 
 
-\## umask
+## umask
 
 \-Umask controls the default permissions that are given to files and directories. On my Ubuntu virtual machine my umask is 0002 so when I create a new file the default permissions are 664 (0666 - 0002(the umask) = 664) so the owner and the group has read(r) and write(w) permissions, and others have read(r) permissions by default . When I create a directory my default permissions are 775 (0777 - 0002(the umask) = 775) so the owner and the group has read(r), write(w), and execute(x) permissions and others have read(r) and execute(x) permissions.
 
 
 
-\## chmod
+## chmod
 
 \-Chmod is used to change permissions on a file. The kernel checks ownership for chmod which means my ability to change permissions depends on if I am the owner and not whether I have permissions to the file or directory.
 
@@ -90,7 +90,7 @@ If I wanted to do the same example using symbolic chmod I would use "chmod g=r f
 
 
 
-\## Ownership
+## Ownership
 
 \-chown is used change the owner of a file or directory. For example to change the owner from user1 to user2 I would use "sudo chown user2 (filename or directoryname)". Also if I wanted to change the group to a new group with owner I could do so by using "sudo chown user2:newgroup (filename or directoryname)" or if I just wanted to change the group I could do so using "sudo chown :newgroup (filename or directoryname)". There is also the option to change all the owners or groups in a directory using "sudo chown -R owner/group dir/" -R stands for recursive as it applies the changes to all the files in the directory. I would be extremely careful when using -R as I wouldn't want to accidentally change the owner or groups of files that I didn't want to.
 
@@ -98,13 +98,13 @@ If I wanted to do the same example using symbolic chmod I would use "chmod g=r f
 
 
 
-\## ACLs
+## ACLs
 
 \-ACLs stand for access control lists and it allows fine grained or specific permissions to be applied to individual users or groups since standard permissions can only be applied to three levels which are the owner, the group and others. With ACLs, I can give each user their own specific permissions ontop of the standard permissions. Also I saw that with ACLs there is a mask which caps the maximum permissions that I can give a user and this caught me off guard because when I set permissions higher than the mask my effective permissions ended up lower than what I configured. Lastly I saw that when a file or directory has an ACL it ends with with an A in the permission string.
 
 
 
-\## sudo
+## sudo
 
 \-I learned that sudo gives me temporary escalated privileges and that it is safer than root because each time I use sudo it is logged so I am able to see in the logs who did what. Two methods that I learned to grant sudo access on Ubuntu are adding a user to the sudo group using "sudo usermod -aG sudo username" and using visudo which checks syntax before saving preventing me from being locked out of sudo entirely because the sudoers file was saved with a syntax error. For fine grained control using "sudo visudo" and adding: username ALL=(ALL:ALL) ALL this breaks down as which user, on which host, can run as which user and group, and which commands so all means no restrictions.
 
@@ -114,13 +114,13 @@ If I wanted to do the same example using symbolic chmod I would use "chmod g=r f
 
 
 
-\## Filesystem Attributes
+## Filesystem Attributes
 
 \-I learned that filesystem attributes operate below the standard permission system which means that even root cannot modify a file if an immutable flag is set using chattr. This is useful as it helps protect critical config files on a hardened server because even if an attacker gets root access they still can not make changes or delete a file that has an immutable flag set without removing it first.
 
 
 
-\## Finding Dangerous Permissions
+## Finding Dangerous Permissions
 
 \-I learned that world writable files are dangerous as any user on the system can modify them. SetUID and SetGID binaries are always worth checking because they run with elevated permissions and if one gets compromised an attacker could gain root access. Also I learned that orphaned files which are files with no owner are a sign that a user account was deleted but the files were never cleaned up which is a security and housekeeping issue.
 
