@@ -1,4 +1,4 @@
-## This lab deals with configuring and hardening an ssh server and fail2ban
+# This lab deals with configuring and hardening an ssh server and fail2ban
 
 
 
