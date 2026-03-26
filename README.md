@@ -26,7 +26,7 @@ This week I set up and hardened an SSH server on my Ubuntu VM. I changed the def
 
 
 
-Full notes and commands -> week1-ssh-hardening.md
+Full notes and commands -> ssh-hardening/README.md
 
 
 
@@ -36,7 +36,7 @@ This week I learned how Linux controls who can access what on a system. I learne
 
 
 
-Full notes and commands -> week2-permissions-notes.md
+Full notes and commands -> permissions/README.md
 
 
 
@@ -46,7 +46,7 @@ This week I learned how the firewall layers on my Ubuntu server work together. I
 
 
 
-Full notes and commands -> week3-firewall-documentation.md
+Full notes and commands -> firewall/README.md
 
 
 
