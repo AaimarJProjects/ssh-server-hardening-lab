@@ -16,7 +16,7 @@ I hardened and deployed an SSH server and configured fail2ban on Ubuntu. The goa
 |AllowUsers \<username\>| A whitelist that determines what user account can be used to ssh into the server |
 
 
-## Key Concepts
+## Cryptographic Keys
 
 ### What are key pairs and how do they work
 - Key pairs are a public and private key that are generated using an algorithm (a mathematical formula) that match each other. They are both different but are both mathematically connected. The private key stays on your machine and it should not be shared with anyone, but you can share your public key with anyone.
