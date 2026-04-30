@@ -1,12 +1,12 @@
 
+# Month 1 is being actively updated
+
 # SSH Hardening and Linux Permissions Lab
-
-
 
 
 ## What this is
 
-This is my hands on home lab where I practice cybersecurity concepts each week. I document everything I do, why I did it, and what I learned so that I can refer back to it and explain it to anyone.
+This is my hands on home lab where I practice cybersecurity concepts each week. I document everything I do, why I did it, and what I learned so that I can refer back to it and explain it to anyone. 
 
 
 
