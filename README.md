@@ -1,4 +1,6 @@
 # SSH Hardening and Linux Permissions Lab
+> Documentation is being updated. 
+> Month 2 work is complete and available here: [docker-api-deployment](https://github.com/AaimarJProjects/docker-api-deployment)
 
 
 ## What this is
