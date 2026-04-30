@@ -1,6 +1,3 @@
-
-# Month 1 is being actively updated
-
 # SSH Hardening and Linux Permissions Lab
 
 
