@@ -1,9 +1,0 @@
-[sshd]
-enabled = true
-logpath = /var/log/auth.log
-findtime = 10m
-maxretry= 3
-bantime = 10m
-port = 2200
-filter = sshd[mode=aggressive]
-
