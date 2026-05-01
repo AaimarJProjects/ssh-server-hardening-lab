@@ -1,52 +1,62 @@
+\# Linux Security Lab 
 
-# SSH Hardening and Linux Permissions Lab
-
-
-
-
-## What this is
-
-This is my hands on home lab where I practice cybersecurity concepts each week. I document everything I do, why I did it, and what I learned so that I can refer back to it and explain it to anyone.
+This is a hands on lab where I spend each week learning and practicing real cybersecurity and Linux system administration skills. I document everything I do, why I did it, what I learned so that I can look back at it, and be able to explain it to anyone. This is built toward my goal of continuous learning and improving daily. As the best way to learn is by going thru the theory and actually applying it.
 
 
 
-## Environment
+\## What this lab covers 
 
--Windows 11 (SSH client)
+Each folder contains my notes, explanations, and evidence for a specific topic. I try to write everything in my own words because I want to actually understand what I am doing and not just copy it, but bear with me as I am relatively new to doing all of this. 
 
--Ubuntu VM (target server)
 
--Kali Linux VM (attacker machine)
+
+\## SSH Server Hardening and Fail2Ban
+
+login, set up key authentication,  disabled password authentication, and configured fail2ban to automatically ban IPs that fail to login or authenticate too many times. 
+
+
 
 
 
 ## Week 1 - SSH Server Hardening and Fail2Ban
 
-This week I set up and hardened an SSH server on my Ubuntu VM. I changed the default port, disabled root login, set up key authentication,  disabled password authentication, and configured fail2ban to automatically ban IPs that fail to login too many times.
+This week I set up and hardened an SSH server on my Ubuntu VM. I changed the default port, disabled root login, set up key authentication,  disabled password authentication, and configured fail2ban to automatically ban IPs that fail to login or authenticate too many times.
 
 
-
-Full notes and commands -> ssh-hardening/README.md
 
 
 
 ## Week 2 - Linux User Management and Permissions
 
-This week I learned how Linux controls who can access what on a system. I learned how permission bits work, how special permissions like SetUID and sticky bits extend the standard model, how ACLs allow fine grained access control, and how to audit a system for dangerous permissions.
+This week I learned about Linux user management, file permissions, ownership, ACLs, and the authentication files that underlie everything. Includes intentional permission breaking and recovery exercises.
 
 
-
-Full notes and commands -> permissions/README.md
 
 
 
 ## Week 3 - Firewall Configuration and Network Security
 
-This week I learned how the firewall layers on my Ubuntu server work together. I learned the difference between UFW, iptables, and nftables and how they connect to each other.
+This week I learned about UFW configuration, iptables and nftables architecture, tcpdump packet capture analysis, and attack testing from a Kali Linux VM to verify defenses from the outside.
 
 
 
-Full notes and commands -> firewall/README.md
+
+
+\## Lab Environment
+
+\-Windows 11 (SSH client)
+
+\-Ubuntu VM (target server)
+
+\-Kali Linux VM (attacker machine)
+
+\-Oracle Virtual Box (virtualization)
+
+
+
+\## What I Learned and what surprised me 
+
+
 
 
 

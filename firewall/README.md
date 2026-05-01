@@ -183,11 +183,11 @@ sudo fail2ban-client status sshd -> checks banned IPs
 
 \### What I used it for
 
-I used tcpdump to see the tcp three way handshake that occurs before a connection is established
+I used tcpdump to see all of the following: the tcp three way handshake that occurs before a connection is established, what it looks like when I do different nmap scans from the defenders point of view e.g. sV and -A, trying to connect to a blocked port and a port with a reject rule, how it looks when the firewall is dropping traffic, and when a connection is refused or a port is open but no service is listening on that port,   to watch the payload in a http packet vs a ssh packet, 
 
-&#x20;
 
-### The TCP handshake I observed
+
+\### The TCP Handshake that I observed
 
 For me to observe the TCP three way handshake I used my client to connect to my server on an open port with a listening service like my ssh server. First my client sent a SYN packet \[S] which means synchronize this is my client saying that it wants to connect. Then my server responded with a SYN-ACK packet \[S.] which means I hear you and I am ready, and then my client sent an ACK\[.] packet which means great let's go. After those three steps the connection was established and data could start flowing.
 
@@ -201,13 +201,15 @@ Now that I have a connection established I then exited to see what happens when 
 
 \### Commands I used
 
-\-sudo tcpdump -i any -n port 2222 -> capture ssh traffic only, on any network interface ,and -n for no hostname lookup as this is faster and sometimes it gives me the wrong hostname or doesn't work at all. 
+\-sudo tcpdump -i any -n port 2222 -> capture ssh traffic only, on any network interface ,and -n for no hostname lookup as this is faster and sometimes it gives me the wrong hostname or doesn't work at all.
 
 \-sudo tcpdump -i network interface -n -w /tmp/filename.pcap -> capture ssh traffic on a specific network interface and save the output to a .pcap file to be later analyzed by Wireshark.
 
 \-sudo tcpdump -n -r /tmp/filename.pcap displays the .pcap file contents in the terminal
 
-\-sudo tcpdump
+\-sudo tcpdump -i any -n -c 50 -> capture traffic on all interfaces and stop at a count of 50.
+
+\-sudo 
 
 
 
@@ -215,13 +217,17 @@ Now that I have a connection established I then exited to see what happens when 
 
 \### What tcpdump proved
 
+\-Using tcpdump taught me something I could not have learned just by running SSH commands like I could see the actual conversation happening at the packet level in real time. This is important because it tells me if a connection is falling because the firewall is dropping packets like if I see a SYN but not SYN-ACK back. Or if I see SYN RST back immediately then something might be actively rejecting it. This difference tell me whether to look at the firewall or the application.
 
 
 
-
-\## Testing From Kali
+\## Testing From Kali \& What I saw from tcpdump
 
 I tested using ping first with the command "ping -c 4 ipaddress" to confirm that my Kali VM could reach my Ubuntu server at the network level before testing specific ports and it could as 4 packets were sent and 4 were received. If ping failed I would know that the problem was a network connectivity issue rather than a firewall issue. I used the -c flag so that ping only sends a certain amount of icmp echo requests and stops automatically without the need to be stopped manually.
+
+
+
+
 
 
 
@@ -244,5 +250,11 @@ I also tested using Nmap which stands for Network Mapper. How Nmap works is it s
 
 
 
+
+
 By using all these different scans I learned the reason the port 443 showed up as closed even though it was open was because there was no service listening and, I saw just like with netcat that when port 23 had a deny rule it just was added to the filtered ports because the traffic was dropped ,and Nmap got no response but when it had a reject rule it showed that port 23 was closed because of the same reason as netcat.
+
+
+
+
 
