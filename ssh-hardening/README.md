@@ -110,7 +110,7 @@ ssh -p<the_new_port_2200> <username@ip>
 ssh-keygen -t ed25519 -f <the_file_name> -C "<You_can_put_a_comment_here>" 
 
 # Sends the public key file to the server (PowerShell).
-type "$HOME\.ssh\<public_key_file>" | ssh -p <sshd_port_number> <username@your_vm_ip> "mkdir -p ~/.ssh & cat >> ~/.ssh/authorized_keys && chmod 700 ~/.ssh \&\&  chmod 600 ~/.ssh/authorized\_keys"
+type "$HOME\.ssh\<public_key_file>" | ssh -p <sshd_port_number> <username@your_vm_ip> "mkdir -p ~/.ssh & cat >> ~/.ssh/authorized_keys && chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys"
 
 #  Outputs the public key in the terminal that was sent to the server. Cat displays the contents in the authorized_keys file in the terminal.
 cat ~/.ssh/authorized_keys
